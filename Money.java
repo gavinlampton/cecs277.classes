@@ -6,12 +6,13 @@ package cecs277.classes;
 //(It errors out if you don't put it on the call on first line.)
 public class Money implements Comparable<ValuedItem>
 {
-	public static enum coinType
+	public static enum MoneyType
 	{
 		PENNY,
 		NICKEL,
 		DIME,
 		QUARTER,
+		HALFDOLLAR,
 		DOLLAR,
 		TWODOLLAR,
 		FIVEDOLLAR,
@@ -24,12 +25,12 @@ public class Money implements Comparable<ValuedItem>
 		mMoneyItem = new ValuedItem();
 	}
 	
-	Money(coinType coin)
+	Money(MoneyType coin)
 	{
 		this(coin,0);
 	}
 	
-	Money(coinType coin, int amount)
+	Money(MoneyType coin, int amount)
 	{
 		switch(coin)
 		{

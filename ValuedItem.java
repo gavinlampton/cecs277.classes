@@ -2,7 +2,7 @@ package cecs277.classes;
 
 //TODO: Javadocs and comment.
 
-//This class has all the functionality for Coin and Product at the moment
+//This class has all the functionality for the Coin and Product classes
 public class ValuedItem implements Comparable<ValuedItem>
 {
 
@@ -48,6 +48,11 @@ public class ValuedItem implements Comparable<ValuedItem>
 	public double getValue()
 	{
 		return mBaseValue*mAmount;
+	}
+	
+	public int getAmount()
+	{
+		return mAmount;
 	}
 	
 	public void add(int amount)

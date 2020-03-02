@@ -3,7 +3,7 @@ package cecs277.classes;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//TODO: Finish vending machine test; write finish input handler and complete tests.
+//TODO: Finish vending machine test; write complete test.
 public class Tester
 {
 	
@@ -15,7 +15,7 @@ public class Tester
 		switch(TESTMODE)
 		{
 			case("COIN"):
-			coinUTest();
+				coinUTest();
 			break;
 			
 			case("PRODUCT"):
@@ -40,9 +40,8 @@ public class Tester
 		}
 	}
 	
-	/*-----------Private Section----------*/
+	/*-----------Methods---------------*/
 
-	//Methods
 	private static void printlist(ArrayList al)
 	{
 		for(Object o : al)
@@ -62,15 +61,15 @@ public class Tester
 		System.out.println(s);
 	}
 	
+	/*---------------Debug Functions-----------*/
 	
-	//Debug functions.
 	private static void coinUTest()
 	{
 		ArrayList<Money> coins = new ArrayList<Money>();
 		
 		coins.add(new Money());
-		coins.add(new Money(Money.coinType.PENNY, 1));
-		coins.add(new Money(Money.coinType.DIME, 14));
+		coins.add(new Money(Money.MoneyType.PENNY, 1));
+		coins.add(new Money(Money.MoneyType.DIME, 14));
 		
 		printlist(coins);
 	}
@@ -118,7 +117,7 @@ public class Tester
 	{
 		VendingMachine foo = new VendingMachine();
 		
-		sop(foo.toString());
+		sop(foo.toString());//Should be empty
 		
 		foo.newProduct("candy", .25, 3);
 		sop(foo.toString());
@@ -126,20 +125,54 @@ public class Tester
 		foo.newProduct("cookie", .65, 10);
 		foo.buyItem("cookie");
 		
-		foo.insertCoin("dime");
+		foo.addProduct("candiie",10);//Should ignore
 		
+		foo.insertMoney(Money.MoneyType.QUARTER);
+		foo.buyItem("cookie");//Should error
+		foo.buyItem("candy");
 		
+		foo.buyItem("candy");//Should error
+		sop("Removed: "+foo.emptyMoney());//Should remove $0.00
+		
+		foo.insertMoney(Money.MoneyType.TENDOLLAR);
+		for(int x=0;x<2;x++)
+		{
+			foo.buyItem("candy");
+		}
+		sop("Removed: "+foo.emptyMoney());//Should remove $9.50
+		
+		foo.insertMoney(Money.MoneyType.HALFDOLLAR);
+		sop(foo.toString());
+		foo.buyItem("candy");//Should not work because out of stock.
+		sop("Removed: "+foo.emptyMoney());//Should remove $0.50
+		
+		foo.addProduct("candy", 10);
+		foo.addProduct("candy", -10);//Should ignore
+		sop(foo.toString());//Candy should have 10 here.
 		
 	}
 	
 	private static void inputHandlerUTest()
 	{
+		InputHandler in = new InputHandler();
+		
+		
+		String input;
+		do
+		{
+			input = in.takeInput();
+			sop(input);
+			input = input.strip().toUpperCase();
+			sop("treated: "+input);
+			
+		} while(input.charAt(0)!='Q');
 		
 	}
 	
 	private static void completeTest()
 	{
-		
+		InputHandler in = new InputHandler();
+		VendingMachine foo = new VendingMachine();
 	}
 	
 	

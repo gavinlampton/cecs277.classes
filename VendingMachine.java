@@ -15,7 +15,7 @@ public class VendingMachine {
 		productTypes = new ArrayList<Product>();
 	}
 	
-	public void insertCoin(String coin)
+	public void insertMoney(Money.MoneyType money)
 	{
 		
 	}
@@ -35,9 +35,9 @@ public class VendingMachine {
 		
 	}
 	
-	public void removeCoins()
+	public double emptyMoney()
 	{
-		
+		return -100;
 	}
 	
 	@Override
@@ -48,6 +48,12 @@ public class VendingMachine {
 		for(Product p : productTypes)
 		{
 			output.append(p.toString());
+			
+			if(p.getAmount()>0)
+			{
+				output.append(" (Out of stock)");
+			}
+			
 			output.append('\n');
 		}
 		
