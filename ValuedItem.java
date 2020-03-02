@@ -1,18 +1,24 @@
 package cecs277.classes;
 
+//TODO: Javadocs and comment.
 
-//This class has all the functionality for Coin and Product
-public class ValuedItem {
+//This class has all the functionality for Coin and Product at the moment
+public class ValuedItem implements Comparable<ValuedItem>
+{
 
-	protected String mName;
-	protected double mBaseValue;
-	protected int mAmount;
-	
 	ValuedItem()
 	{
-		mName = "";
-		mBaseValue = 0;
-		mAmount = 0;
+		this("UNNAMED ITEM",0,0);
+	}
+	
+	ValuedItem(String name)
+	{
+		this(name,0,0);
+	}
+	
+	ValuedItem(String name, double baseValue)
+	{
+		this(name,baseValue,0);
 	}
 	
 	ValuedItem(String name, double baseValue, int amount)
@@ -30,7 +36,7 @@ public class ValuedItem {
 		
 		if(amount>0)
 		{
-			mBaseValue = amount;
+			mAmount = amount;
 		}
 		else
 		{
@@ -54,17 +60,45 @@ public class ValuedItem {
 	
 	public void remove(int amount)
 	{
-		if(mAmount>=amount&&amount>0)
+		if(amount>0)
 		{
-			mAmount-=amount;
+			if(!(mAmount > amount))
+			{
+				mAmount=0;
+			}
+			else
+			{
+				mAmount-=amount;
+			}
 		}
 	}
 	
 	@Override
 	public String toString()
 	{
-		return String.format("%d %s @ %0.f", mAmount, getNamePlural(), getValue());
+		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getValue());
 	}
+	
+	@Override
+	public int compareTo(ValuedItem item)
+	{
+		
+		if(getValue()==item.getValue())
+		{
+			return 0;
+		}
+		else
+		{
+			return getValue()>item.getValue() ? 1 : -1;
+		}
+	}
+	
+	/*----------------Private Section------------*/
+	
+	private String mName;
+	private double mBaseValue;
+	private int mAmount;
+	
 	
 	//This method isn't really necessary but I made it anyways; it takes the name and makes it plural.
 	private String getNamePlural()
@@ -72,19 +106,20 @@ public class ValuedItem {
 		StringBuilder output = new StringBuilder();
 		output.append(mName);
 		
-		if(mAmount > 0)
+		if(mAmount != 1)
 		{
+			
 			switch(output.charAt(output.length()-1))
 			{
 				case 'y':
 					output.deleteCharAt(output.length()-1);
-					output.append("ies");
+					output.append("ie");
 					break;
 					
 				case 'o':
 				case 's':
 				case 'x':
-					output.append("es");
+					output.append("e");
 					break;
 					
 				case 'e':
@@ -98,10 +133,13 @@ public class ValuedItem {
 					}
 				case 'f':
 					output.deleteCharAt(output.length()-1);
-					output.append("ves");
-					break;	
+					output.append("ve");
+					break;
 			}
+			
+			output.append("s");
 		}
+
 		
 		return output.toString();
 		
