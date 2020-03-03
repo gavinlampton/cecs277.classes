@@ -13,11 +13,21 @@ public class VendingMachine {
 	{
 		coinTypes = new ArrayList<Money>();
 		productTypes = new ArrayList<Product>();
+
+
 	}
-	
-	public void insertMoney(Money.MoneyType money)
-	{
-		
+
+	public void insertMoney(Money.MoneyType money) {
+		boolean hasType = false;
+		for (int i = 0; i < coinTypes.size(); i++) {
+			if (coinTypes.get(i).getType().equals(money)) {
+				coinTypes.get(i).add(1);
+				hasType = true;
+			}
+		}
+		if (!hasType) {
+			coinTypes.add(new Money(money, 1));
+		}
 	}
 	
 	public void buyItem(String item)

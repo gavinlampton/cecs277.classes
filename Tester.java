@@ -9,6 +9,8 @@ public class Tester
 	
 	public static void main(String[] args)
 	{
+		Money penny = new Money(Money.MoneyType.PENNY);		//TODO: delete later
+		System.out.println(penny);
 		//Make this match a case listed below.
 		String TESTMODE = "MACHINE";
 		
@@ -174,6 +176,5 @@ public class Tester
 		InputHandler in = new InputHandler();
 		VendingMachine foo = new VendingMachine();
 	}
-	
 	
 }

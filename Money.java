@@ -32,6 +32,8 @@ public class Money implements Comparable<ValuedItem>
 	
 	Money(MoneyType coin, int amount)
 	{
+		mMoneyType = coin;
+
 		switch(coin)
 		{
 			case PENNY:
@@ -76,6 +78,8 @@ public class Money implements Comparable<ValuedItem>
 	{
 		return mMoneyItem.getValue();
 	}
+
+	public MoneyType getType(){return mMoneyType;}
 	
 	public void add(int amount)
 	{
@@ -101,4 +105,5 @@ public class Money implements Comparable<ValuedItem>
 	
 	/*--------------Private Section--------------*/
 	private ValuedItem mMoneyItem;
+	private MoneyType mMoneyType;
 }

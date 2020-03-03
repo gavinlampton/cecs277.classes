@@ -2,7 +2,7 @@ package cecs277.classes;
 
 //TODO: Javadocs and comment.
 
-//This class has all the functionality for the Coin and Product classes
+//This class has all the functionality for the and Product classes
 public class ValuedItem implements Comparable<ValuedItem>
 {
 
