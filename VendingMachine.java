@@ -37,7 +37,7 @@ public class VendingMachine {
 		for(Product p: productTypes){
 			if(p.getName().equals(item)) {
 				haveProduct = true;
-				if (mPaid > p.getBaseValue()) {
+				if (mPaid >= p.getBaseValue()) {
 					p.remove(1);
 					mPaid -= p.getBaseValue();
 					//TODO: delete later
@@ -89,18 +89,28 @@ public class VendingMachine {
 		for(Product p : productTypes)
 		{
 			output.append(p.toString());
-			
-			if(p.getAmount()>0)
-			{
+
+			if (p.getAmount() > 0) {
 				output.append(" (Out of stock)");
 			}
-			
+
 			output.append('\n');
 		}
-		
+
 		return output.toString();
 	}
-	
+
+	public void fullyStockVendingMachine() {
+		productTypes.add(new Product("Doritos", 2.99, 15));
+		productTypes.add(new Product("Cheetos", 2.99, 15));
+		productTypes.add(new Product("Fritos", 2.99, 15));
+		productTypes.add(new Product("Lays", 2.99, 15));
+		productTypes.add(new Product("Pretzel", 1.99, 15));
+		productTypes.add(new Product("Cookies", 1.50, 15));
+		productTypes.add(new Product("Twix", 0.99, 15));
+		productTypes.add(new Product("Sneakers", 0.99, 15));
+	}
+
 	/*-------Private Section---------*/
 	//These are just suggestions
 	private double storedMoney()

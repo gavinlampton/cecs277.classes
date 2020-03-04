@@ -10,7 +10,7 @@ public class Tester
 	public static void main(String[] args)
 	{
 		//Make this match a case listed below.
-		String TESTMODE = "BUY";
+		String TESTMODE = "FULLY_STOCKED";
 		
 		switch(TESTMODE)
 		{
@@ -40,6 +40,10 @@ public class Tester
 
 			case("BUY"):
 				buyProduct();
+				break;
+
+			case("FULLY_STOCKED"):
+				fullyStockAndBuy();
 				break;
 			
 			case("ALL"):
@@ -215,12 +219,34 @@ public class Tester
 		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
 		wale.insertMoney(Money.MoneyType.NICKEL);
 
-
 		wale.buyItem("Doritos");
 		System.out.println(wale);
-		wale.buyItem("Chips");			// there is no "chips" item. Does nothing.
+		wale.buyItem("Chips");						// there is no "chips" item. Does nothing.
 		System.out.println(wale);
 		wale.buyItem("Twix");
+	}
+
+	private static void fullyStockAndBuy(){
+		VendingMachine wale = new VendingMachine();
+		wale.fullyStockVendingMachine();
+
+		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
+
+		wale.insertMoney(Money.MoneyType.DOLLAR);
+		wale.insertMoney(Money.MoneyType.DOLLAR);
+		wale.insertMoney(Money.MoneyType.QUARTER);
+		wale.insertMoney(Money.MoneyType.QUARTER);
+		wale.insertMoney(Money.MoneyType.QUARTER);
+		wale.insertMoney(Money.MoneyType.DIME);
+		wale.insertMoney(Money.MoneyType.DIME);
+		wale.insertMoney(Money.MoneyType.PENNY);
+		wale.insertMoney(Money.MoneyType.PENNY);
+		wale.insertMoney(Money.MoneyType.PENNY);
+		wale.insertMoney(Money.MoneyType.PENNY);
+		System.out.println(wale.getPaidAmount());  		//FIXME: WE SHOULD HAVE ENOUGH MONEY!!!!!!!
+
+		wale.buyItem("Doritos");
+		System.out.println(wale.getPaidAmount());		//FIXME: WE SHOULDNT HAVE ANY MOVEY LEFT.
 
 	}
 	
