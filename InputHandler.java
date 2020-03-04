@@ -27,7 +27,6 @@ public class InputHandler {
 		return super.toString();
 	}
 	
-	/*---------Private Methods------------*/
 	private String sanitizeInput(String s)
 	{
 		StringBuilder sb = new StringBuilder(s);
