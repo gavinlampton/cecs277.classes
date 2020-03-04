@@ -3,7 +3,7 @@ package cecs277.classes;
 //TODO: Javadocs and comment.
 
 //This class has all the functionality for the and Product classes
-public class ValuedItem implements Comparable<ValuedItem>
+public class ValuedItem
 {
 
 	ValuedItem()
@@ -45,12 +45,20 @@ public class ValuedItem implements Comparable<ValuedItem>
 		
 	}
 	
-	public double getValue()
+	public String getName()
+	{
+		return new String(mName);
+	}
+	
+	public double getFullValue()
 	{
 		return mBaseValue*mAmount;
 	}
-
-	public double getBaseValue() { return mBaseValue; }
+	
+	public double getBaseValue() 
+	{
+		return mBaseValue;
+	}
 	
 	public int getAmount()
 	{
@@ -83,25 +91,7 @@ public class ValuedItem implements Comparable<ValuedItem>
 	@Override
 	public String toString()
 	{
-		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getValue());
-	}
-	
-	@Override
-	public int compareTo(ValuedItem item)
-	{
-		
-		if(getValue()==item.getValue())
-		{
-			return 0;
-		}
-		else
-		{
-			return getValue()>item.getValue() ? 1 : -1;
-		}
-	}
-
-	public String getName(){
-		return mName;
+		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getFullValue());
 	}
 	
 	/*----------------Private Section------------*/
@@ -112,7 +102,7 @@ public class ValuedItem implements Comparable<ValuedItem>
 	
 	
 	//This method isn't really necessary but I made it anyways; it takes the name and makes it plural.
-	private String getNamePlural()
+	protected String getNamePlural()
 	{
 		StringBuilder output = new StringBuilder();
 		output.append(mName);

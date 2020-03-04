@@ -18,13 +18,32 @@ public class InputHandler {
 	
 	public String takeInput()
 	{
-		return sc.nextLine();
+		return sanitizeInput(sc.nextLine());
 	}
 	
 	@Override
 	public String toString()
 	{
 		return super.toString();
+	}
+	
+	private String sanitizeInput(String s)
+	{
+		StringBuilder sb = new StringBuilder(s);
+		
+		for(int x = 0; x < sb.length(); x++)
+		{
+			if(sb.charAt(x)=='"')
+			{
+				if(sb.charAt(x-1)!='\\')
+				{
+					sb.insert(x-1, '\\');
+				}
+			}
+			
+		}
+		
+		return sb.toString();
 	}
 	
 }
