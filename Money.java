@@ -4,6 +4,8 @@ package cecs277.classes;
 
 public class Money extends ValuedItem
 {
+	private MoneyType mMoneyType;
+	
 	public static enum MoneyType
 	{
 		PENNY("penny", .01),
@@ -61,9 +63,5 @@ public class Money extends ValuedItem
 	{
 		return super.toString();
 	}
-
-	
-	/*--------------Private Section--------------*/
-	private MoneyType mMoneyType;
 }
 

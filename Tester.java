@@ -8,8 +8,16 @@ public class Tester
 	
 	public static void main(String[] args)
 	{
+		ArrayList<ValuedItem> al = new ArrayList<ValuedItem>();
+		al.add(new Money(Money.MoneyType.PENNY, 2));
+		al.add(new Product("test",10,1));
+		
+		for(ValuedItem i: al)
+		{
+			System.out.println(i);
+		}
 		//Make this match a case listed below.
-		String TESTMODE = "FULLY_STOCKED";
+		String TESTMODE = "MACHINE";
 		
 		switch(TESTMODE)
 		{
@@ -20,7 +28,7 @@ public class Tester
 			case("PRODUCT"):
 				productUTest();
 			break;
-
+			
 			case("ITEM"):
 				valuedItemUTest();
 			break;
@@ -32,18 +40,6 @@ public class Tester
 			case("INPUT"):
 				inputHandlerUTest();
 			break;
-
-			case("COIN_INSERT"):
-				coinInsertTest();
-				break;
-
-			case("BUY"):
-				buyProduct();
-				break;
-
-			case("FULLY_STOCKED"):
-				fullyStockAndBuy();
-				break;
 			
 			case("ALL"):
 				completeTest();
@@ -88,23 +84,14 @@ public class Tester
 	private static void productUTest()
 	{
 		ArrayList<Product> produce = new ArrayList<Product>();
-
+		
 		produce.add(new Product());
 		produce.add(new Product("Apple",3,10));
 		produce.add(new Product("Mango",2,2));
-
+		
 		sop("Basic:");
 		printlist(produce);
-
-		sop("\nSorted:");
-		Collections.sort(produce);
-		printlist(produce);
-
-		sop("\nRe-sorted");
-		produce.get(1).add(20);
-		Collections.sort(produce);
-		printlist(produce);
-
+		
 		sop("Add/Remove:");
 		for(Product p : produce)
 		{
@@ -112,14 +99,14 @@ public class Tester
 			p.add(-1);
 			p.remove(-1);
 			sop(p.toString());
-
+			
 			p.remove(9);
 			sop(p.toString());
 			sop();
-		}
+		}	
 	}
-
-	private static void valuedItemUTest()
+	
+	private static void valuedItemUTest() 
 	{
 		productUTest();
 	}
@@ -185,78 +172,5 @@ public class Tester
 		InputHandler in = new InputHandler();
 		VendingMachine foo = new VendingMachine();
 	}
-
-	private static void coinInsertTest(){
-		VendingMachine wale = new VendingMachine();
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.DIME);
-		wale.insertMoney(Money.MoneyType.TENDOLLAR);
-		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
-		wale.insertMoney(Money.MoneyType.NICKEL);
-		System.out.printf("You entered $ %.2f\n", wale.getPaidAmount());
-
-		System.out.println(wale.toString());					//FIXME: fix this method
-
-	}
-
-	private static void buyProduct(){
-		VendingMachine wale = new VendingMachine();
-		wale.newProduct("Doritos", 2.99, 5);
-		wale.newProduct("Cheetos", 2.99, 5);
-		wale.newProduct("Twix", 0.99, 5);
-		wale.newProduct("Cookies", 1.50, 5);
-
-		Product twix = new Product("Twix", 2.99, 10);
-
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.DIME);
-		wale.insertMoney(Money.MoneyType.TENDOLLAR);
-		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
-		wale.insertMoney(Money.MoneyType.NICKEL);
-
-		wale.buyItem("Doritos");
-		System.out.println(wale);
-		wale.buyItem("Chips");						// there is no "chips" item. Does nothing.
-		System.out.println(wale);
-		wale.buyItem("Twix");
-	}
-
-	private static void fullyStockAndBuy(){
-		VendingMachine wale = new VendingMachine();
-		wale.fullyStockVendingMachine();
-
-//		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
-
-		wale.insertMoney(Money.MoneyType.DOLLAR);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.DOLLAR);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.DIME);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.DIME);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.PENNY);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.PENNY);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.PENNY);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-		wale.insertMoney(Money.MoneyType.PENNY);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
-
-		System.out.println(wale.getPaidAmount());  		//FIXME: WE SHOULD HAVE ENOUGH MONEY!!!!!!!
-
-		wale.buyItem("Doritos");
-		System.out.println(wale.getPaidAmount());		//FIXME: WE SHOULDNT HAVE ANY MOVEY LEFT.
-	}
+	
 }
