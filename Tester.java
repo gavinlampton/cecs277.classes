@@ -87,36 +87,36 @@ public class Tester
 	
 	private static void productUTest()
 	{
-		ArrayList<Product> produce = new ArrayList<Product>();
-
-		produce.add(new Product());
-		produce.add(new Product("Apple",3,10));
-		produce.add(new Product("Mango",2,2));
-
-		sop("Basic:");
-		printlist(produce);
-
-		sop("\nSorted:");
-		Collections.sort(produce);
-		printlist(produce);
-
-		sop("\nRe-sorted");
-		produce.get(1).add(20);
-		Collections.sort(produce);
-		printlist(produce);
-
-		sop("Add/Remove:");
-		for(Product p : produce)
-		{
-			p.add(2);
-			p.add(-1);
-			p.remove(-1);
-			sop(p.toString());
-
-			p.remove(9);
-			sop(p.toString());
-			sop();
-		}
+//		ArrayList<Product> produce = new ArrayList<Product>();
+//
+//		produce.add(new Product());
+//		produce.add(new Product("Apple",3,10));
+//		produce.add(new Product("Mango",2,2));
+//
+//		sop("Basic:");
+//		printlist(produce);
+//
+//		sop("\nSorted:");
+//		Collections.sort(produce);
+//		printlist(produce);
+//
+//		sop("\nRe-sorted");
+//		produce.get(1).add(20);
+//		Collections.sort(produce);
+//		printlist(produce);
+//
+//		sop("Add/Remove:");
+//		for(Product p : produce)
+//		{
+//			p.add(2);
+//			p.add(-1);
+//			p.remove(-1);
+//			sop(p.toString());
+//
+//			p.remove(9);
+//			sop(p.toString());
+//			sop();
+//		}
 	}
 
 	private static void valuedItemUTest()
@@ -232,13 +232,9 @@ public class Tester
 //		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
 
 		wale.insertMoney(Money.MoneyType.DOLLAR);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.DOLLAR);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
-		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
 		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.DIME);
