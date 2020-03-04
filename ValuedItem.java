@@ -5,7 +5,11 @@ package cecs277.classes;
 //This class has all the functionality for the and Product classes
 public class ValuedItem
 {
-
+	
+	private String mName;
+	private double mBaseValue;
+	private int mAmount;
+	
 	ValuedItem()
 	{
 		this("UNNAMED ITEM",0,0);
@@ -94,12 +98,34 @@ public class ValuedItem
 		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getFullValue());
 	}
 	
-	/*----------------Private Section------------*/
+	/**
+	 * Returns equal if the name of this item is the same as given a string or the name of another item.
+	 *  
+	 */
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(obj.getClass().isAssignableFrom(this.getClass()))
+		{
+			return mName.equals( ((ValuedItem)obj).mName );
+		}
+		else if(obj.getClass().equals(String.class))
+		{
+			return mName.equals( (String)obj );
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
-	private String mName;
-	private double mBaseValue;
-	private int mAmount;
+	@Override
+	public int hashCode()
+	{
+		return mName.hashCode();
+	}
 	
+	/*----------------Private Methods------------*/
 	
 	//This method isn't really necessary but I made it anyways; it takes the name and makes it plural.
 	protected String getNamePlural()
