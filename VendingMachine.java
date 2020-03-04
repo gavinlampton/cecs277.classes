@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class VendingMachine {
 	
 	//Each coin/product objects keeps track of how the type is handled as has the amount as a number.
-	ArrayList<Money> coinTypes;
-	ArrayList<Product> productTypes;
-	
+	private ArrayList<Money> coinTypes;
+	private ArrayList<Product> productTypes;
+	private double mPaid;
+
+
 	VendingMachine()
 	{
 		coinTypes = new ArrayList<Money>();
 		productTypes = new ArrayList<Product>();
-
-
 	}
 
 	public void insertMoney(Money.MoneyType money) {
@@ -28,6 +28,7 @@ public class VendingMachine {
 		if (!hasType) {
 			coinTypes.add(new Money(money, 1));
 		}
+		mPaid += money.getValue();
 	}
 	
 	public void buyItem(String item)

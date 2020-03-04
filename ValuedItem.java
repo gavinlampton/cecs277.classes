@@ -49,6 +49,8 @@ public class ValuedItem implements Comparable<ValuedItem>
 	{
 		return mBaseValue*mAmount;
 	}
+
+	public double getBaseValue() { return mBaseValue; }
 	
 	public int getAmount()
 	{

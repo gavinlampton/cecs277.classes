@@ -127,7 +127,7 @@ public class Tester
 		foo.newProduct("cookie", .65, 10);
 		foo.buyItem("cookie");
 		
-		foo.addProduct("candiie",10);//Should ignore
+		foo.addProduct("candiie",10);	//Should ignore
 		
 		foo.insertMoney(Money.MoneyType.QUARTER);
 		foo.buyItem("cookie");//Should error

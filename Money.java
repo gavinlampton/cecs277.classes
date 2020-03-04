@@ -17,7 +17,16 @@ public class Money implements Comparable<ValuedItem>
 		TWODOLLAR,
 		FIVEDOLLAR,
 		TENDOLLAR,
-		TWENTYDOLLAR
+		TWENTYDOLLAR;
+
+		public double getValue(){
+			switch(this) {
+				case PENNY:
+					return 0.01;
+				default:
+					return 0;
+			}
+		}
 	}
 	
 	Money()
@@ -80,6 +89,8 @@ public class Money implements Comparable<ValuedItem>
 	}
 
 	public MoneyType getType(){return mMoneyType;}
+
+	public double getBaseValue(){return mMoneyItem.getBaseValue();}
 	
 	public void add(int amount)
 	{
