@@ -110,11 +110,4 @@ public class VendingMachine {
 		productTypes.add(new Product("Twix", 0.99, 15));
 		productTypes.add(new Product("Sneakers", 0.99, 15));
 	}
-
-	/*-------Private Section---------*/
-	//These are just suggestions
-	private double storedMoney()
-	{
-		return 0;
-	}
 }

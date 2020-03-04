@@ -99,8 +99,9 @@ public class ValuedItem
 	}
 	
 	/**
-	 * Returns equal if the name of this item is the same as given a string or the name of another item.
-	 *  
+	 * Returns true if the name of this item is the same as given a string or the name of another item.
+	 * @param obj the object which will be tested for equality
+	 * @return true if obj is the same class or subclass with the same name or a string equivalent to name, otherwise false
 	 */
 	@Override
 	public boolean equals(Object obj)
