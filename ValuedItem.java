@@ -3,9 +3,13 @@ package cecs277.classes;
 //TODO: Javadocs and comment.
 
 //This class has all the functionality for the and Product classes
-public class ValuedItem implements Comparable<ValuedItem>
+public class ValuedItem
 {
-
+	
+	private String mName;
+	private double mBaseValue;
+	private int mAmount;
+	
 	ValuedItem()
 	{
 		this("UNNAMED ITEM",0,0);
@@ -45,12 +49,20 @@ public class ValuedItem implements Comparable<ValuedItem>
 		
 	}
 	
-	public double getValue()
+	public String getName()
+	{
+		return new String(mName);
+	}
+	
+	public double getFullValue()
 	{
 		return mBaseValue*mAmount;
 	}
-
-	public double getBaseValue() { return mBaseValue; }
+	
+	public double getBaseValue() 
+	{
+		return mBaseValue;
+	}
 	
 	public int getAmount()
 	{
@@ -83,36 +95,40 @@ public class ValuedItem implements Comparable<ValuedItem>
 	@Override
 	public String toString()
 	{
-		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getValue());
+		return String.format("%d %s @ %.2f", mAmount, getNamePlural(), getFullValue());
 	}
 	
+	/**
+	 * Returns equal if the name of this item is the same as given a string or the name of another item.
+	 *  
+	 */
 	@Override
-	public int compareTo(ValuedItem item)
+	public boolean equals(Object obj)
 	{
-		
-		if(getValue()==item.getValue())
+		if(obj.getClass().isAssignableFrom(this.getClass()))
 		{
-			return 0;
+			return mName.equals( ((ValuedItem)obj).mName );
+		}
+		else if(obj.getClass().equals(String.class))
+		{
+			return mName.equals( (String)obj );
 		}
 		else
 		{
-			return getValue()>item.getValue() ? 1 : -1;
+			return false;
 		}
 	}
-
-	public String getName(){
-		return mName;
+	
+	@Override
+	public int hashCode()
+	{
+		return mName.hashCode();
 	}
 	
-	/*----------------Private Section------------*/
-	
-	private String mName;
-	private double mBaseValue;
-	private int mAmount;
-	
+	/*----------------Private Methods------------*/
 	
 	//This method isn't really necessary but I made it anyways; it takes the name and makes it plural.
-	private String getNamePlural()
+	protected String getNamePlural()
 	{
 		StringBuilder output = new StringBuilder();
 		output.append(mName);
