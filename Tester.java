@@ -143,8 +143,8 @@ public class Tester
 		}	
 >>>>>>> 4264a873a8f512b26815459a110e0922c7ceb8f6
 	}
-
-	private static void valuedItemUTest()
+	
+	private static void valuedItemUTest() 
 	{
 		productUTest();
 	}
