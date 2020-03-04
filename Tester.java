@@ -1,7 +1,6 @@
 package cecs277.classes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 //TODO: Finish vending machine test; write complete test.
 public class Tester
@@ -21,7 +20,7 @@ public class Tester
 			case("PRODUCT"):
 				productUTest();
 			break;
-			
+
 			case("ITEM"):
 				valuedItemUTest();
 			break;
@@ -89,23 +88,23 @@ public class Tester
 	private static void productUTest()
 	{
 		ArrayList<Product> produce = new ArrayList<Product>();
-		
+
 		produce.add(new Product());
 		produce.add(new Product("Apple",3,10));
 		produce.add(new Product("Mango",2,2));
-		
+
 		sop("Basic:");
 		printlist(produce);
 
 		sop("\nSorted:");
 		Collections.sort(produce);
 		printlist(produce);
-		
+
 		sop("\nRe-sorted");
 		produce.get(1).add(20);
 		Collections.sort(produce);
 		printlist(produce);
-		
+
 		sop("Add/Remove:");
 		for(Product p : produce)
 		{
@@ -113,14 +112,14 @@ public class Tester
 			p.add(-1);
 			p.remove(-1);
 			sop(p.toString());
-			
+
 			p.remove(9);
 			sop(p.toString());
 			sop();
-		}	
+		}
 	}
-	
-	private static void valuedItemUTest() 
+
+	private static void valuedItemUTest()
 	{
 		productUTest();
 	}
@@ -230,24 +229,34 @@ public class Tester
 		VendingMachine wale = new VendingMachine();
 		wale.fullyStockVendingMachine();
 
-		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
+//		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
 
 		wale.insertMoney(Money.MoneyType.DOLLAR);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.DOLLAR);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.QUARTER);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.DIME);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.DIME);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.PENNY);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.PENNY);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.PENNY);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
 		wale.insertMoney(Money.MoneyType.PENNY);
+		System.out.println("Current balance: $ " + wale.getPaidAmount());
+
 		System.out.println(wale.getPaidAmount());  		//FIXME: WE SHOULD HAVE ENOUGH MONEY!!!!!!!
 
 		wale.buyItem("Doritos");
 		System.out.println(wale.getPaidAmount());		//FIXME: WE SHOULDNT HAVE ANY MOVEY LEFT.
-
 	}
-	
 }
