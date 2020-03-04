@@ -23,6 +23,24 @@ public class Money implements Comparable<ValuedItem>
 			switch(this) {
 				case PENNY:
 					return 0.01;
+				case NICKEL:
+					return 0.05000;
+				case DIME:
+					return 0.10;
+				case QUARTER:
+					return 0.25;
+				case HALFDOLLAR:
+					return 0.50;
+				case DOLLAR:
+					return 1.00;
+				case TWODOLLAR:
+					return 2.00;
+				case FIVEDOLLAR:
+					return 5.00;
+				case TENDOLLAR:
+					return 10.00;
+				case TWENTYDOLLAR:
+					return 20.00;
 				default:
 					return 0;
 			}

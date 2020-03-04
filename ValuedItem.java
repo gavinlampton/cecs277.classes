@@ -99,6 +99,10 @@ public class ValuedItem implements Comparable<ValuedItem>
 			return getValue()>item.getValue() ? 1 : -1;
 		}
 	}
+
+	public String getName(){
+		return mName;
+	}
 	
 	/*----------------Private Section------------*/
 	

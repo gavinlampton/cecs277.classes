@@ -33,17 +33,47 @@ public class VendingMachine {
 	
 	public void buyItem(String item)
 	{
-		
+		boolean haveProduct = false;
+		for(Product p: productTypes){
+			if(p.getName().equals(item)) {
+				haveProduct = true;
+				if (mPaid > p.getBaseValue()) {
+					p.remove(1);
+					mPaid -= p.getBaseValue();
+					//TODO: delete later
+					System.out.println("You just bought " + item);
+					System.out.printf("          Cost: $%3.2f\n", p.getBaseValue());
+					System.out.printf("      Balance:: $%3.2f\n\n", mPaid);
+				}else {
+					System.out.println("You do not have enough money\n");
+				}
+			}
+		}
+		if (!haveProduct){
+			System.out.println("Their are no " + item + ". Please try again.\n");
+		}
 	}
+
+	public double getPaidAmount(){ return mPaid;}
 	
 	public void newProduct(String item, double baseValue, int amount)
 	{
-		
+		Product product = new Product(item,baseValue,amount);
+		productTypes.add(product);
 	}	
 	
 	public void addProduct(String item, int amount)
 	{
-		
+		boolean addedItem = false;
+		for(Product p: productTypes){
+			if (p.getName().equals(item)){
+				p.add(amount);
+				addedItem = true;
+			}
+		}
+		if(!addedItem){
+			System.out.println("Sorry there is not" + item + " in the vending machine");
+		}
 	}
 	
 	public double emptyMoney()
