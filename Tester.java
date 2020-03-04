@@ -1,7 +1,6 @@
 package cecs277.classes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 //TODO: Finish vending machine test; write complete test.
 public class Tester
@@ -88,47 +87,12 @@ public class Tester
 	
 	private static void productUTest()
 	{
-<<<<<<< HEAD
-//		ArrayList<Product> produce = new ArrayList<Product>();
-//
-//		produce.add(new Product());
-//		produce.add(new Product("Apple",3,10));
-//		produce.add(new Product("Mango",2,2));
-//
-//		sop("Basic:");
-//		printlist(produce);
-//
-//		sop("\nSorted:");
-//		Collections.sort(produce);
-//		printlist(produce);
-//
-//		sop("\nRe-sorted");
-//		produce.get(1).add(20);
-//		Collections.sort(produce);
-//		printlist(produce);
-//
-//		sop("Add/Remove:");
-//		for(Product p : produce)
-//		{
-//			p.add(2);
-//			p.add(-1);
-//			p.remove(-1);
-//			sop(p.toString());
-//
-//			p.remove(9);
-//			sop(p.toString());
-//			sop();
-//		}
-=======
 		ArrayList<Product> produce = new ArrayList<Product>();
-		
+
 		produce.add(new Product());
 		produce.add(new Product("Apple",3,10));
 		produce.add(new Product("Mango",2,2));
-		
-		sop("Basic:");
-		printlist(produce);
-		
+
 		sop("Add/Remove:");
 		for(Product p : produce)
 		{
@@ -136,12 +100,11 @@ public class Tester
 			p.add(-1);
 			p.remove(-1);
 			sop(p.toString());
-			
+
 			p.remove(9);
 			sop(p.toString());
 			sop();
-		}	
->>>>>>> 4264a873a8f512b26815459a110e0922c7ceb8f6
+		}
 	}
 	
 	private static void valuedItemUTest() 

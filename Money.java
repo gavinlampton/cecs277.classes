@@ -66,4 +66,3 @@ public class Money extends ValuedItem
 	/*--------------Private Section--------------*/
 	private MoneyType mMoneyType;
 }
-
