@@ -135,7 +135,7 @@ public class VendingMachine {
 		for(Product p: productTypes){
 			if (p.getName().equals(name)){
 				haveProduct = true;
-				productInfo = p.toString() + "  (" + p.getAmount() + " left)";
+				productInfo = p.toString();
 			}
 		}
 		if (!haveProduct){
@@ -153,10 +153,8 @@ public class VendingMachine {
 		{
 			output.append(p.toString());
 
-			if(p.getAmount() <= 0){
+			if(p.getAmount() <= 0) {
 				output.append(" (Out of stock)");
-			}else{
-				output.append("  (" + p.getAmount() + " left)");
 			}
 			output.append('\n');
 		}
