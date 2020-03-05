@@ -2,6 +2,11 @@ package cecs277.classes;
 
 import java.util.ArrayList;
 
+/**
+ * @author Alfonso Villalobos
+ * @author Gavin Lamptom
+ */
+
 //TODO: Finish vending machine test; write complete test.
 public class Tester
 {
