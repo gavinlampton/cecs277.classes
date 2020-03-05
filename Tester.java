@@ -215,9 +215,9 @@ public class Tester
 		VendingMachine wale = new VendingMachine();
 		wale.fullyStockVendingMachine();
 
-		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
+		wale.buyItem("Doritos: Cool Ranch"); 					// Can't buy because we haven't paid
 
-		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
+		wale.insertMoney(Money.MoneyType.TENDOLLAR);
 
 		wale.buyItem("Doritos");
 		wale.buyItem("Doritos");
@@ -226,7 +226,10 @@ public class Tester
 		wale.buyItem("Twix");
 		wale.buyItem("Cookie");
 
-		System.out.println(wale.toString());
+		wale.restockAll();
+
+        System.out.println(wale.toString());
+
+        System.out.println(wale.productDetails("Doritos"));
 	}
-	
 }
