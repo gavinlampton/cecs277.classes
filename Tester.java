@@ -1,6 +1,7 @@
 package cecs277.classes;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * @author Alfonso Villalobos
@@ -14,7 +15,7 @@ public class Tester
 	public static void main(String[] args)
 	{
 		//Make this match a case listed below.
-		String TESTMODE = "FULLY_STOCKED";
+		String TESTMODE = "ALL";
 		
 		switch(TESTMODE)
 		{
@@ -76,6 +77,9 @@ public class Tester
 	{
 		System.out.println(s);
 	}
+	
+	/*--------------Variables----------------*/
+	private static String uiPrompt = "S)how products\tI)nsert coin\tB)uy\tA)dd product\tR)emove coins\tQ)uit";
 	
 	/*---------------Debug Functions-----------*/
 	
@@ -172,12 +176,6 @@ public class Tester
 		} while(input.charAt(0)!='Q');
 		
 	}
-	
-	private static void completeTest()
-	{
-		InputHandler in = new InputHandler();
-		VendingMachine foo = new VendingMachine();
-	}
 
 	private static void coinInsertTest(){
 		VendingMachine wale = new VendingMachine();
@@ -236,7 +234,97 @@ public class Tester
         System.out.println(wale.toString());
 
         System.out.println(wale.productDetails("Doritos"));
+	}
+	
 
-        System.out.println(wale.toString());
+	private static void completeTest()
+	{
+		InputHandler in = new InputHandler();
+		VendingMachine foo = new VendingMachine();
+		StringBuilder sb = new StringBuilder();
+		StringTokenizer st;
+		String input;
+		boolean isLooping = true;
+		
+		foo.fullyStockVendingMachine();
+		
+		do
+		{
+			System.out.println(uiPrompt);
+			input = in.takeInput().toUpperCase();
+			
+			switch(input.charAt(0))
+			{
+			
+			case 'S':
+				sop(foo.toString());
+				break;
+				
+			case 'I':
+				for(Money.MoneyType moneyType : Money.MoneyType.values())
+				{
+					System.out.printf( "%c) %s @ $%.2f\n", moneyType.getID(), moneyType.toString(), moneyType.getValue());
+				}
+				
+				input = in.takeInput().toUpperCase();
+				sop("Input: "+input.charAt(0));
+				
+				for(Money.MoneyType moneyType : Money.MoneyType.values())
+				{
+					if(moneyType.getID()==input.charAt(0))
+					{
+						foo.insertMoney(moneyType);
+						sop("You inserted a "+moneyType.toString());
+					}
+				}
+					
+				break;
+				
+			case 'B':
+				st = new StringTokenizer(foo.toString(),"\n");
+				sb.delete(0, sb.length());
+				
+				for(int x=0; st.hasMoreTokens(); x++)
+				{
+					sb.append((char)(x+'A'));
+					sb.append(") ");
+					sb.append(st.nextToken());
+					
+					sop(sb.toString());
+					
+					sb.delete(0, sb.length());
+				}
+				
+				input = in.takeInput().toUpperCase();
+				foo.buyItem(foo.lookupItem(input.charAt(0)));
+				
+				break;
+				
+			case 'A':
+				System.out.println("Enter product name: ");
+				input = in.takeInput();
+				
+				if(foo.hasProduct(input))
+				{
+					foo.addProduct(input, 10);
+				}
+				else
+				{
+					System.out.println("Enter product price: ");
+					foo.newProduct(input, Double.parseDouble(in.takeInput()), 10);
+				}
+				
+				break;
+				
+			case 'R':
+				foo.emptyMoney();
+				break;
+				
+			case 'Q':
+				isLooping=false;
+				break;
+			}
+			
+		} while(isLooping);
 	}
 }

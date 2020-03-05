@@ -1,7 +1,5 @@
 package cecs277.classes;
 
-//TODO: javadocs and comment
-
 //We can change between either of these implementations at any time without changing anything else.
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -16,10 +14,19 @@ public class InputHandler {
 		sc = new Scanner(System.in);
 	}
 	
+	/**
+	 * Takes input.
+	 * @return input.
+	 */
+	
 	public String takeInput()
 	{
 		return sanitizeInput(sc.nextLine());
 	}
+	/**
+	 * Gives object name
+	 * @return object name.
+	 */
 	
 	@Override
 	public String toString()

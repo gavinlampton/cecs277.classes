@@ -2,7 +2,6 @@ package cecs277.classes;
 
 import java.util.ArrayList;
 
-//TODO: Fill in the functions
 public class VendingMachine {
 	
 	//Each coin/product objects keeps track of how the type is handled as has the amount as a number.
@@ -20,7 +19,50 @@ public class VendingMachine {
 		coinTypes = new ArrayList<Money>();
 		productTypes = new ArrayList<Product>();
 	}
-
+	
+	/**
+	 * Returns a product's id as a char.
+	 * @param item
+	 * @return
+	 */
+	
+	public char getID(String item)
+	{
+		return (char)(productTypes.indexOf(item)+'A');
+	}
+	/**
+	 * Returns a product's name using the char id.
+	 * @param id
+	 * @return
+	 */
+	public String lookupItem(char id)
+	{
+		int location = (int)id-'A';
+		
+		if(location>=0 && location<productTypes.size())
+		{
+			return productTypes.get(location).getName();
+		}
+		else
+		{
+			return "";
+		}
+	}
+	
+	public boolean hasProduct(String name)
+	{
+		for(Product p:productTypes)
+		{
+			if(p.equals(name))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	
 	/**
 	 * Money to be inserted to buy a product from the vending machine
 	 * @param money the ytpe of money inserted
@@ -55,7 +97,7 @@ public class VendingMachine {
 					//TODO: delete later
 					System.out.println("Item bought " + item);
 					System.out.printf("          Cost: $%3.2f\n", p.getBaseValue());
-					System.out.printf("      Balance:: $%3.2f\n\n", mPaid);
+					System.out.printf("      Balance: $%3.2f\n\n", mPaid);
 				}else {
 					System.out.println("Insufficient funds\n");
 				}

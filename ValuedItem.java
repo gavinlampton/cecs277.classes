@@ -9,6 +9,7 @@ public class ValuedItem
 	private String mName;
 	private double mBaseValue;
 	private int mAmount;
+	private char mID;
 	
 	ValuedItem()
 	{
@@ -49,26 +50,46 @@ public class ValuedItem
 		
 	}
 	
+	/**
+	 * Gives the name of the item
+	 * @return name.
+	 */
 	public String getName()
 	{
 		return new String(mName);
 	}
 	
+	/**
+	 * Gives the value of all items of this types.
+	 * @return Value of all items.
+	 */
 	public double getFullValue()
 	{
 		return mBaseValue*mAmount;
 	}
 	
+	/**
+	 * Give the value of a single item of this type.
+	 * @return Value of one item.
+	 */
 	public double getBaseValue() 
 	{
 		return mBaseValue;
 	}
 	
+	/**
+	 * Gives the amount of items of this type.
+	 * @return Amount of items.
+	 */
 	public int getAmount()
 	{
 		return mAmount;
 	}
 	
+	/**
+	 * Adds a set amount of items.
+	 * @param amount - how many items to add.
+	 */
 	public void add(int amount)
 	{
 		if(amount>0)
@@ -77,6 +98,10 @@ public class ValuedItem
 		}
 	}
 	
+	/**
+	 * Removes a set amount of items.
+	 * @param amount - how many items to remove.
+	 */
 	public void remove(int amount)
 	{
 		if(amount>0)
@@ -92,6 +117,9 @@ public class ValuedItem
 		}
 	}
 	
+	/**
+	 * Returns values as a formatted string.
+	 */
 	@Override
 	public String toString()
 	{
@@ -119,7 +147,10 @@ public class ValuedItem
 			return false;
 		}
 	}
-	
+	/**
+	 * Returns the has code for this item, updated for the new equals function.
+	 * @return hash code
+	 */
 	@Override
 	public int hashCode()
 	{

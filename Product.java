@@ -22,6 +22,6 @@ public class Product extends ValuedItem
 	@Override
 	public String toString()
 	{
-		return String.format("%s @ %.2f  (%d left)", getName(), getBaseValue(),getAmount());
+		return String.format("%s @ $%.2f  (%d left)", getName(), getBaseValue(),getAmount());
 	}
 }
