@@ -12,12 +12,19 @@ public class VendingMachine {
 	private final int MAX_PPRODUCTS_IN_SLOT = 15;
 
 
+	/**
+	 * Constructor to build a vending machine object
+	 */
 	VendingMachine()
 	{
 		coinTypes = new ArrayList<Money>();
 		productTypes = new ArrayList<Product>();
 	}
 
+	/**
+	 * Money to be inserted to buy a product from the vending machine
+	 * @param money the ytpe of money inserted
+	 */
 	public void insertMoney(Money.MoneyType money) {
 		boolean hasType = false;
 		for (int i = 0; i < coinTypes.size(); i++) {
@@ -31,7 +38,11 @@ public class VendingMachine {
 		}
 		mPaid += money.getValue();
 	}
-	
+
+	/**
+	 * Method that performs the buying of a product from the vending machine
+	 * @param item the item to be bought
+	 */
 	public void buyItem(String item)
 	{
 		boolean haveProduct = false;
@@ -58,21 +69,35 @@ public class VendingMachine {
 	public double getPaidAmount(){
 		return mPaid;
 	}
-	
+
+	/**
+	 * Adds a new product to the vending machine with a given amount of products
+	 * @param item Product name
+	 * @param baseValue Cost of product
+	 * @param amount quantity of products to be added
+	 */
 	public void newProduct(String item, double baseValue, int amount)
 	{
 		Product product = new Product(item,baseValue,amount);
 		productTypes.add(product);
-	}	
-	
+	}
+
+	/**
+	 * Adds a product that the vending machine has
+	 * @param item the name of the product to be restocked
+	 * @param amount the amount of products you are restocking.
+	 */
 	public void addProduct(String item, int amount)
 	{
+		int counter = 0;
 		if(amount > 0) {
 			boolean addedItem = false;
 			for (Product p : productTypes) {
 				if (p.getName().equals(item)) {
-					p.add(amount);
-					addedItem = true;
+					while (counter < amount && p.getAmount() < MAX_PPRODUCTS_IN_SLOT) {
+						p.add(amount);
+						addedItem = true;
+					}
 				}
 			}
 			if (!addedItem) {
@@ -80,7 +105,12 @@ public class VendingMachine {
 			}
 		}
 	}
-	
+
+	/**
+	 * Takes all the coins out of the vending machine. This simulated a technician coming to collect the
+	 * money.
+	 * @return the amound of money that was collected.
+	 */
 	public double emptyMoney()
 	{
 		double totalCoinAmount = 0;
@@ -90,6 +120,9 @@ public class VendingMachine {
 		return totalCoinAmount;
 	}
 
+	/**
+	 * Creates a respresenation of an actual vending machine with snack prices, cost, and quantity.
+	 */
 	public void fullyStockVendingMachine() {
 		productTypes.add(new Product("Doritos", 1.25, 15));
 		productTypes.add(new Product("Cheetos", 1.25, 15));
@@ -121,6 +154,9 @@ public class VendingMachine {
 		mPaid = 0;
 	}
 
+	/**
+	 * Method to restock all products in a vending machine. All idem can only have a maximum amount of 15 items.
+	 */
 	public void restockAll(){
 		for (Product p: productTypes){
 			while (p.getAmount() > 0 & p.getAmount() < MAX_PPRODUCTS_IN_SLOT){
@@ -129,6 +165,11 @@ public class VendingMachine {
 		}
 	}
 
+	/**
+	 * Creates a string of a single product
+	 * @param name Name of the product you want information on
+	 * @return product information.
+	 */
 	public String productDetails(String name){
 		String productInfo = "";
 		boolean haveProduct = false;
@@ -144,6 +185,10 @@ public class VendingMachine {
 		return productInfo;
 	}
 
+	/**
+	 * Creates a String of al the products name, cost, and amount of items in the vending machine
+	 * @return information of all products
+	 */
 	@Override
 	public String toString()
 	{

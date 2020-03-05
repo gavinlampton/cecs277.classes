@@ -14,7 +14,7 @@ public class Tester
 	public static void main(String[] args)
 	{
 		//Make this match a case listed below.
-		String TESTMODE = "MACHINE";
+		String TESTMODE = "FULLY_STOCKED";
 		
 		switch(TESTMODE)
 		{
@@ -236,5 +236,7 @@ public class Tester
         System.out.println(wale.toString());
 
         System.out.println(wale.productDetails("Doritos"));
+
+        System.out.println(wale.toString());
 	}
 }
