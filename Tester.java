@@ -176,6 +176,7 @@ public class Tester
 
 	private static void coinInsertTest(){
 		VendingMachine wale = new VendingMachine();
+
 		wale.insertMoney(Money.MoneyType.QUARTER);
 		wale.insertMoney(Money.MoneyType.QUARTER);
 		wale.insertMoney(Money.MoneyType.QUARTER);
@@ -183,20 +184,17 @@ public class Tester
 		wale.insertMoney(Money.MoneyType.TENDOLLAR);
 		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
 		wale.insertMoney(Money.MoneyType.NICKEL);
+
 		System.out.printf("You entered $ %.2f\n", wale.getPaidAmount());
-
-		System.out.println(wale.toString());					//FIXME: fix this method
-
 	}
 
 	private static void buyProduct(){
 		VendingMachine wale = new VendingMachine();
+
 		wale.newProduct("Doritos", 2.99, 5);
 		wale.newProduct("Cheetos", 2.99, 5);
 		wale.newProduct("Twix", 0.99, 5);
 		wale.newProduct("Cookies", 1.50, 5);
-
-		Product twix = new Product("Twix", 2.99, 10);
 
 		wale.insertMoney(Money.MoneyType.QUARTER);
 		wale.insertMoney(Money.MoneyType.QUARTER);
@@ -219,22 +217,16 @@ public class Tester
 
 		wale.buyItem("Doritos"); 					// Can't buy because we haven't paid
 
-		wale.insertMoney(Money.MoneyType.DOLLAR);
-		wale.insertMoney(Money.MoneyType.DOLLAR);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.QUARTER);
-		wale.insertMoney(Money.MoneyType.DIME);
-		wale.insertMoney(Money.MoneyType.DIME);
-		wale.insertMoney(Money.MoneyType.PENNY);
-		wale.insertMoney(Money.MoneyType.PENNY);
-		wale.insertMoney(Money.MoneyType.PENNY);
-		wale.insertMoney(Money.MoneyType.PENNY);
-		System.out.println(wale.getPaidAmount());  		//FIXME: WE SHOULD HAVE ENOUGH MONEY!!!!!!!
+		wale.insertMoney(Money.MoneyType.TWENTYDOLLAR);
 
 		wale.buyItem("Doritos");
-		System.out.println(wale.getPaidAmount());		//FIXME: WE SHOULDNT HAVE ANY MOVEY LEFT.
+		wale.buyItem("Doritos");
+		wale.buyItem("Doritos");
+		wale.buyItem("Hershey's");
+		wale.buyItem("Twix");
+		wale.buyItem("Cookie");
 
+		System.out.println(wale.toString());
 	}
 	
 }
