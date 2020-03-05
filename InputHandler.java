@@ -5,20 +5,37 @@
  * Outputs: The user's input.
  */
 
-package cecs277.classes;
-
 //We can change between either of these implementations at any time without changing anything else.
 import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.File;
 
 public class InputHandler {
 	
 	private Scanner sc;
 	private BufferedReader br;
+	private File f;
+	private boolean isFile;
 	
 	InputHandler()
 	{
 		sc = new Scanner(System.in);
+	}
+	
+	InputHandler(String source)
+	{
+		f = new File(source);
+		
+		try
+		{
+			sc = new Scanner(f);
+			isFile = true;
+		}
+		catch(java.io.FileNotFoundException e)
+		{
+			isFile = false;
+			sc = new Scanner(System.in);
+		}
 	}
 	
 	/**
@@ -27,9 +44,40 @@ public class InputHandler {
 	 */
 	public String takeInput()
 	{
-		return sanitizeInput(sc.nextLine());
+		if(hasInput())
+		{
+			return sanitizeInput(sc.nextLine());
+		}
+		else
+		{
+			return "";
+		}
 	}
 	
+	public boolean isFile()
+	{
+		return isFile;
+	}
+	
+	public void close()
+	{
+		if(isFile)
+		{
+			sc.close();
+		}
+	}
+	
+	public boolean hasInput()
+	{
+		if(isFile)
+		{
+			return sc.hasNext();
+		}
+		else
+		{
+			return true;
+		}
+	}
 	/**
 	 * Gives object name
 	 * @return object name.
