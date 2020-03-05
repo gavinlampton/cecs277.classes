@@ -94,17 +94,10 @@ public class VendingMachine {
 				if (mPaid >= p.getBaseValue()) {
 					p.remove(1);
 					mPaid -= p.getBaseValue();
-					//TODO: delete later
-					System.out.println("Item bought " + item);
-					System.out.printf("          Cost: $%3.2f\n", p.getBaseValue());
-					System.out.printf("      Balance: $%3.2f\n\n", mPaid);
 				}else {
 					System.out.println("Insufficient funds\n");
 				}
 			}
-		}
-		if (!haveProduct){
-			System.out.println("Their are no " + item + ". Please try again.\n");
 		}
 	}
 
@@ -139,11 +132,9 @@ public class VendingMachine {
 					while (counter < amount && p.getAmount() < MAX_PPRODUCTS_IN_SLOT) {
 						p.add(amount);
 						addedItem = true;
+						counter++;
 					}
 				}
-			}
-			if (!addedItem) {
-				System.out.println("Sorry, " +item + " does not exist\n");
 			}
 		}
 	}
