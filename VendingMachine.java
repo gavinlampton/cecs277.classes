@@ -76,7 +76,7 @@ public class VendingMachine {
 				}
 			}
 			if (!addedItem) {
-				System.out.println("Sorry there is not" + item + " in the vending machine");
+				System.out.println("Sorry, " +item + " does not exist\n");
 			}
 		}
 	}

@@ -9,7 +9,7 @@ public class Tester
 	public static void main(String[] args)
 	{
 		//Make this match a case listed below.
-		String TESTMODE = "FULLY_STOCKED";
+		String TESTMODE = "MACHINE";
 		
 		switch(TESTMODE)
 		{
