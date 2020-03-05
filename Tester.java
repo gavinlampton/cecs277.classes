@@ -1,3 +1,10 @@
+/*Gavin Lampton, Alfonso Villalobos
+ * March 5, 2020
+ * Purpose: This program is used to simulate a vending machine.
+ * Inputs: The user's commands
+ * Outputs: Text prompts based on the situation.
+ */
+
 package cecs277.classes;
 
 import java.util.ArrayList;
@@ -8,7 +15,6 @@ import java.util.StringTokenizer;
  * @author Gavin Lamptom
  */
 
-//TODO: Finish vending machine test; write complete test.
 public class Tester
 {
 	

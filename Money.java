@@ -1,6 +1,11 @@
-package cecs277.classes;
+/*Gavin Lampton, Alfonso Villalobos
+ * March 5, 2020
+ * Purpose: This program is used to simulate a type of money.
+ * Inputs: The specifications of the money.
+ * Outputs: Information about the money.
+ */
 
-//TODO: Javadocs and comment.
+package cecs277.classes;
 
 public class Money extends ValuedItem
 {
@@ -57,24 +62,41 @@ public class Money extends ValuedItem
 		}
 	}
 	
+	/**
+	 * Create a default object with no name, value, or amount.
+	 */
 	Money()
 	{
 		super();
 	}
-	
+	/**
+	 * Create a money type from a coin  template and set to no initial amount.
+	 * @param coin
+	 */
 	Money(MoneyType coin)
 	{
 		this(coin,0);
 	}
-	
+	/**
+	 * Create a money type for a coin template and set to an initial amount.
+	 * @param coin
+	 * @param amount
+	 */
 	Money(MoneyType coin, int amount)
 	{
 		super(coin.toString(),coin.getValue(),amount);
 		mMoneyType = coin;
 	}
 	
+	/**
+	 * Gets the type template for this money type.
+	 * @return the template this type uses.
+	 */
 	public MoneyType getType(){return mMoneyType;}	
 	
+	/**
+	 * Returns this object's values as a formatted string.
+	 */
 	@Override
 	public String toString()
 	{

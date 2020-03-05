@@ -1,6 +1,11 @@
-package cecs277.classes;
+/*Gavin Lampton, Alfonso Villalobos
+ * March 5, 2020
+ * Purpose: This program is used to simulate a type of product.
+ * Inputs: The specifications of the product.
+ * Outputs: Information about the product.
+ */
 
-//TODO: javadocs and comment
+package cecs277.classes;
 
 public class Product extends ValuedItem
 {
@@ -19,6 +24,9 @@ public class Product extends ValuedItem
 		super(name,baseValue,amount);
 	}
 	
+	/**
+	 * Returns the values as a formatted String.
+	 */
 	@Override
 	public String toString()
 	{

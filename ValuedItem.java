@@ -1,6 +1,11 @@
-package cecs277.classes;
+/*Gavin Lampton, Alfonso Villalobos
+ * March 5, 2020
+ * Purpose: This program is used to simulate a type of item.
+ * Inputs: The specifications of the item.
+ * Outputs: Information about the item.
+ */
 
-//TODO: Javadocs and comment.
+package cecs277.classes;
 
 //This class has all the functionality for the and Product classes
 public class ValuedItem
@@ -11,21 +16,39 @@ public class ValuedItem
 	private int mAmount;
 	private char mID;
 	
+	/**
+	 * Creates default item with no name, value, or items.
+	 */
 	ValuedItem()
 	{
 		this("UNNAMED ITEM",0,0);
 	}
 	
+	/**
+	 * Creates Item with a given name but a value and amount of 0.
+	 * @param name
+	 */
 	ValuedItem(String name)
 	{
 		this(name,0,0);
 	}
 	
+	/**
+	 * Creates item with a given name and value but amount of 0.
+	 * @param name
+	 * @param baseValue
+	 */
 	ValuedItem(String name, double baseValue)
 	{
 		this(name,baseValue,0);
 	}
 	
+	/**
+	 * Creates a type with a given name, value and amount.
+	 * @param name
+	 * @param baseValue
+	 * @param amount
+	 */
 	ValuedItem(String name, double baseValue, int amount)
 	{
 		mName=name;
